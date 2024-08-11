@@ -9,13 +9,6 @@
         jogo();
     }
 
-    // // Menu do jogo  
-    // document.getElementById('start').addEventListener('click', function() {
-    //     resetGame();
-    //     jogo();
-    // });
-
-
     // Função para resetar o jogo
     function resetGame() {
         mario.src = './imagens/mario.gif';
@@ -67,9 +60,6 @@
                 mario.style.marginLeft = `50px`;
     
                 clearInterval(loop);
-                
-                
-                // start = parseInt(prompt('Desejas continuar? Digite 1 para continuar e 0 para sair'));
                 
                  
             } 
