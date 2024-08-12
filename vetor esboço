@@ -1,0 +1,184 @@
+// construido na aula com Marconi
+
+var pipe=[];
+    pipe[0] = document.querySelector('.pipe');
+    pipe[1] = document.querySelector('.pipe2');
+
+// VETOR
+const gameContainer = document.getElementById('game-container');
+const button = document.getElementById('start-animation');
+
+const numeroDeTubos = 2; // Número de tubos que você deseja animar
+const tubos = [];
+const velocidade = 2; // Velocidade da animação
+
+function criarTubo() {
+    const tubo = document.createElement('.pipe2');
+    tubo.src = 'imagens/pipe2.png';
+    tubo.className = 'tubo';
+    gameContainer.appendChild(tubo);
+    return tubo;
+}
+
+function inicializarTubos() {
+    for (let i = 0; i < numeroDeTubos; i++) {
+        const tubo = criarTubo();
+        tubo.style.left = `${i * (gameContainer.clientWidth / numeroDeTubos)}px`;
+        tubos.push(tubo);
+    }
+}
+
+function moverTubos() {
+    tubos.forEach(tubo => {
+        let posicaoX = parseFloat(tubo.style.left);
+        posicaoX -= velocidade;
+
+        if (posicaoX < -tubo.clientWidth) {
+            posicaoX = gameContainer.clientWidth;
+        }
+
+        tubo.style.left = `${posicaoX}px`;
+    });
+
+    requestAnimationFrame(moverTubos);
+}
+
+button.addEventListener('click', () => {
+    if (tubos.length === 0) {
+        inicializarTubos();
+    }
+    moverTubos();
+});
+
+
+
+
+
+
+
+
+  // código completo (js) com falhas de colisão
+  document.addEventListener('DOMContentLoaded', () => {
+    const mario = document.querySelector('.mario');
+    var pipe=[];
+    pipe[0] = document.querySelector('.pipe');
+    pipe[1] = document.querySelector('.pipe2');
+
+    const currentURL = window.location.href;
+    console.log("Current URL:", currentURL);
+
+    if(currentURL.includes('jogo')){
+        jogo();
+    }
+
+    // Função para resetar o jogo
+    function resetGame() {
+        mario.src = './imagens/mario.gif';
+        mario.style.width = '50px';
+        mario.style.marginLeft = '0px';
+        mario.style.bottom = '0px';
+        pipe.style.left = 'initial';
+        pipe.style.animation = 'pipe-animation 1.5s infinite linear';
+    }
+
+    // Jogo
+    function jogo() {
+        function jump() {
+            if (!mario.classList.contains('jump')) {
+                mario.classList.add('jump');
+    
+                setTimeout(() => {
+                    mario.classList.remove('jump');
+                }, 500); // Duração da animação
+            }
+        }
+    
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' || event.code === 'ArrowUp') {
+                jump(); // teclas para pular
+            }
+        });
+    
+        // gameover 
+        const loop = setInterval(() => {
+    
+            console.log(`loop`);
+    
+            const pipePosition = pipe.offsetLeft;
+            const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+            console.log(`pipe: ${pipePosition}, mario: ${marioPosition}`);
+    
+            // Verificação de game over 
+            if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+                pipe.style.left = `${pipePosition}px`;
+                pipe.style.animation = `none`;
+    
+                mario.style.animation = `none`;
+                mario.style.bottom = `${marioPosition}px`;
+    
+                // estlização game over do Mario
+                mario.src = `./imagens/game-over.png `;
+                mario.style.width = `75px`;
+                mario.style.marginLeft = `50px`;
+    
+                clearInterval(loop);
+                
+                 
+            } 
+        }, 10);
+    }      
+});
+
+
+// VETOR
+const gameContainer = document.getElementById('game-container');
+const button = document.getElementById('start-animation');
+
+const numeroDeTubos = 2; // Número de tubos que você deseja animar
+const tubos = [];
+const velocidade = 2; // Velocidade da animação
+
+function criarTubo() {
+    const tubo = document.createElement('.pipe2');
+    tubo.src = 'imagens/pipe2.png';
+    tubo.className = 'tubo';
+    gameContainer.appendChild(tubo);
+    return tubo;
+}
+
+function inicializarTubos() {
+    for (let i = 0; i < numeroDeTubos; i++) {
+        const tubo = criarTubo();
+        tubo.style.left = `${i * (gameContainer.clientWidth / numeroDeTubos)}px`;
+        tubos.push(tubo);
+    }
+}
+
+function moverTubos() {
+    tubos.forEach(tubo => {
+        let posicaoX = parseFloat(tubo.style.left);
+        posicaoX -= velocidade;
+
+        if (posicaoX < -tubo.clientWidth) {
+            posicaoX = gameContainer.clientWidth;
+        }
+
+        tubo.style.left = `${posicaoX}px`;
+    });
+
+    requestAnimationFrame(moverTubos);
+}
+
+button.addEventListener('click', () => {
+    if (tubos.length === 0) {
+        inicializarTubos();
+    }
+    moverTubos();
+});
+
+
+
+
+
+
+  
