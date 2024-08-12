@@ -112,6 +112,14 @@
     /* animado com right */
 }
 
+.pipe2 {
+    position: absolute;
+    bottom: 0;
+    width: 225px;   
+    animation: pipe-animation 1.5s infinite linear;
+    /* animado com right */
+}
+
 .mario {
     width: 150px;
     position: absolute;
