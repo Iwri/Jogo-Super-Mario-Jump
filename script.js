@@ -1,22 +1,16 @@
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const mario = document.querySelector('.mario');
-    const pipe = document.querySelector('.pipe');
-
+    var pipe = [];
+    pipe[0] = document.querySelector('.pipe');
+    pipe[1] = document.querySelector('.pipe2');
     const currentURL = window.location.href;
     console.log("Current URL:", currentURL);
 
+    audioGame = new Audio('./som/audio_theme.mp3')
+
+
     if(currentURL.includes('jogo')){
         jogo();
-    }
-
-    // Função para resetar o jogo
-    function resetGame() {
-        mario.src = './imagens/mario.gif';
-        mario.style.width = '50px';
-        mario.style.marginLeft = '0px';
-        mario.style.bottom = '0px';
-        pipe.style.left = 'initial';
-        pipe.style.animation = 'pipe-animation 1.5s infinite linear';
     }
 
     // Jogo
@@ -29,6 +23,7 @@
                     mario.classList.remove('jump');
                 }, 500); // Duração da animação
             }
+            audioGame.play()
         }
     
         document.addEventListener('keydown', (event) => {
@@ -42,27 +37,27 @@
     
             console.log(`loop`);
     
-            const pipePosition = pipe.offsetLeft;
-            const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-            console.log(`pipe: ${pipePosition}, mario: ${marioPosition}`);
-    
-            // Verificação de game over 
-            if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
-                pipe.style.left = `${pipePosition}px`;
-                pipe.style.animation = `none`;
-    
-                mario.style.animation = `none`;
-                mario.style.bottom = `${marioPosition}px`;
-    
-                // estlização game over do Mario
-                mario.src = `./imagens/game-over.png `;
-                mario.style.width = `75px`;
-                mario.style.marginLeft = `50px`;
-    
-                clearInterval(loop);
+            pipe.forEach((pipeElement) => {
+                const pipePosition = pipeElement.offsetLeft;
+                const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+                console.log(`pipe: ${pipePosition}, mario: ${marioPosition}`);
                 
-                 
-            } 
+                // Verificação de game over 
+                if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+                    pipeElement.style.left = `${pipePosition}px`;
+                    pipeElement.style.animation = `none`;
+    
+                    mario.style.animation = `none`;
+                    mario.style.bottom = `${marioPosition}px`;
+    
+                    // estlização game over do Mario
+                    mario.src = `./imagens/game-over.png`;
+                    mario.style.width = `75px`;
+                    mario.style.marginLeft = `50px`;
+                    
+                    clearInterval(loop);                                    
+                }
+            });
         }, 10);
     }      
 });
