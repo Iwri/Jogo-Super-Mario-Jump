@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const audioGame = new Audio('./som/audio_theme.mp3');
 
+    // vetor
+    var pipes = [];
+    pipes[0] = pipe1;
+    pipes[1] = pipe2;
+
+
     if (currentURL.includes('jogo')) {
         jogo();
     }
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // gameover para o primeiro pipe
-        const loopPipe1 = setInterval(() => {
+        const loopPipe = setInterval(() => {
             const pipe1Position = pipe1.offsetLeft;
             const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
             
