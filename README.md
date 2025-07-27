@@ -13,14 +13,6 @@ O objetivo do jogo é simples: sobreviver o máximo possível! Controle o Mario,
 ### Controles
 * **Barra de Espaço:** Pular
 
-## 🚀 Como Jogar / Demonstração ao Vivo
-
-**Você pode jogar agora mesmo clicando neste link!**
-
-> **Sugestão:** Este projeto é perfeito para ser hospedado gratuitamente com o **GitHub Pages**. Para fazer isso, vá em **Settings > Pages** no seu repositório, selecione a branch `main` como fonte e salve. Em minutos, seu jogo estará no ar em um link parecido com `https://Iwri.github.io/Jogo-Super-Mario-Jump/`. Coloque esse link aqui!
-
-**[https://Iwri.github.io/Jogo-Super-Mario-Jump/](https://Iwri.github.io/Jogo-Super-Mario-Jump/)**
-
 ## 🛠️ Tecnologias Utilizadas
 
 * **HTML5:** Arquivos `index.html`, `jogo.html`, etc., para a estruturação do conteúdo.
