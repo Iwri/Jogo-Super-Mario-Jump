@@ -13,10 +13,6 @@ O objetivo do jogo é controlar o Mario, fazendo-o pular para desviar dos canos 
 ### Controles
 * **Barra de Espaço:** Pular
 
-## 🎬 Demonstração
-
-![Demonstração do Jogo](https://i.imgur.com/link_para_seu_gif_ou_imagem.png)
-
 ## ✨ Funcionalidades
 
 * Movimentação e pulo do personagem.
